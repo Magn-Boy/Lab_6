@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">JetNotes</string>
     <string name="header">Заголовок</string>
     <string name="content">Содержимое</string>
     <string name="notes">Заметки</string>

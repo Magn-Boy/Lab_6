@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_EXPRESSION")
+
 
 package com.raywenderlich.android.jetnotes.util.components
 
@@ -43,7 +43,7 @@ private fun AppDrawerHeader(){
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
 fun AppDrawerHeaderPreview(){
     JetNotesTheme {
@@ -163,7 +163,7 @@ fun AppDrawer(
     }
 }
 
-@Preview
+
 @Composable
 fun ScreenNavigationButtonPreview(){
     JetNotesTheme {
@@ -175,7 +175,7 @@ fun ScreenNavigationButtonPreview(){
         )
     }
 }
-@Preview
+
 @Composable
 private fun LightDarkThemeItemPreview(){
     JetNotesTheme {
@@ -187,6 +187,8 @@ private fun LightDarkThemeItemPreview(){
 @Composable
 fun AppDrawerPreview(){
     JetNotesTheme {
-        AppDrawer(Screen.Notes) {}
+        AppDrawer(Screen.Notes){
+
+        }
     }
 }
