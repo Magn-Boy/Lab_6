@@ -3,6 +3,8 @@ package com.raywenderlich.android.jetnotes.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.raywenderlich.android.jetnotes.data.database.dao.ColorDao
 import com.raywenderlich.android.jetnotes.data.database.dao.NoteDao
 import com.raywenderlich.android.jetnotes.data.database.dbmapper.DbMapper
@@ -10,6 +12,7 @@ import com.raywenderlich.android.jetnotes.data.database.model.ColorDbModel
 import com.raywenderlich.android.jetnotes.data.database.model.NoteDbModel
 import com.raywenderlich.android.jetnotes.domain.model.ColorModel
 import com.raywenderlich.android.jetnotes.domain.model.NoteModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -21,6 +24,7 @@ class RepositoryImpl(
   private val colorDao: ColorDao,
   private val dbMapper: DbMapper
 ) : Repository {
+
 
   private val notesNotInTrashLiveData: MutableLiveData<List<NoteModel>> by lazy {
     MutableLiveData<List<NoteModel>>()
@@ -119,5 +123,13 @@ class RepositoryImpl(
     notesNotInTrashLiveData.postValue(getAllNotesDependingOnTrashStateSync(false))
     val newNotesInTrashLiveData = getAllNotesDependingOnTrashStateSync(true)
     notesInTrashLiveData.postValue(newNotesInTrashLiveData)
+  }
+}
+
+class ViewModel: ViewModel() {
+  init {
+    viewModelScope.launch(Dispatchers.Default){
+
+    }
   }
 }

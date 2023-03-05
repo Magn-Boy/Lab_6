@@ -18,10 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.raywenderlich.android.jetnotes.R
+import com.raywenderlich.android.jetnotes.domain.model.NoteModel
 import com.raywenderlich.android.jetnotes.theme.rwGreen
 
 @Composable
-fun Note(){
+fun Note(
+    note: NoteModel,
+    onNoteClick: (NoteModel) -> Unit = {},
+    onNoteCheckedChange: (NoteModel) -> Unit = {}
+){
     val backgroundShape: Shape = RoundedCornerShape(4.dp)
     Row(
         modifier = Modifier
@@ -78,5 +83,12 @@ fun Note(){
 @Preview
 @Composable
 fun NotePreview(){
-    Note()
+    Note(
+        note = NoteModel(
+            1,
+            "Заметка 1",
+            "Содержание 1",
+            null
+        )
+    )
 }
