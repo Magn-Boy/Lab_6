@@ -14,7 +14,10 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
-    val notesNotInTrash: LiveData<List<NoteModel>> = repository.getAllNotesNotInTrash()
+    val notesNotInTrash: LiveData<List<NoteModel>> by lazy{
+        repository.getAllNotesNotInTrash()
+    }
+
     fun onCreateNewNoteClick(){
 
     }
