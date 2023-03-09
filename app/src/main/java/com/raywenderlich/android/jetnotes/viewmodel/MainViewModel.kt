@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.raywenderlich.android.jetnotes.data.repository.Repository
 import com.raywenderlich.android.jetnotes.domain.model.NoteModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -29,7 +30,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     fun onNoteCheckedChange(
         note: NoteModel
     ) {
-        viewModelScope.launch {
+        viewModelScope.launch(
+            Dispatchers.Default
+        ) {
             repository.insertNote(note)
         }
     }

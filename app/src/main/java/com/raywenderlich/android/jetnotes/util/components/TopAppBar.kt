@@ -31,7 +31,7 @@ fun TopAppBar(
     title: String,
     icon : ImageVector,
     onIconClick: () -> Unit
-){
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -62,7 +62,6 @@ fun TopAppBar(
                 .padding(start = 16.dp, end = 16.dp)
         )
     }
-
 }
 
 @Preview

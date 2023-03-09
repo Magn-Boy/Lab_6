@@ -20,7 +20,7 @@ import com.raywenderlich.android.jetnotes.viewmodel.MainViewModel
 fun NotesScreen(viewModel: MainViewModel) {
     val notes: List<NoteModel> by viewModel
         .notesNotInTrash
-        .observeAsState(listOfNotNull())
+        .observeAsState(listOf())
 
 
     Column {
@@ -29,21 +29,26 @@ fun NotesScreen(viewModel: MainViewModel) {
             icon = Icons.Filled.List,
             onIconClick = {}
           )
-        NotesList(
-            notes = notes,
-            onNoteCheckedChange = { viewModel.onNoteCheckedChange(it) },
-            onNoteClick = { viewModel.onNoteClick(it) }
-        ) }
+        LazyColumn{
+            items(count = notes.size){noteIndex -> val note = notes[noteIndex]
+                Note(
+                    note = note,
+                    onNoteClick = {viewModel.onNoteClick(it)},
+                    onNoteCheckedChange = {viewModel.onNoteCheckedChange(it)}
+                )
+            }
+        }
     }
+}
 
 
 @Preview
 @Composable
 private fun NotesListPreview(){ NotesList(
-    notes = listOfNotNull(
+    notes = listOf(
         NoteModel(1, "Note 1", "Content 1", null),
-        NoteModel(1, "Note 2", "Content 2", null),
-        NoteModel(1, "Note 3", "Content 3", null),
+        NoteModel(1, "Note 2", "Content 2", true),
+        NoteModel(1, "Note 3", "Content 3", false)
     ),
     onNoteCheckedChange = {}, onNoteClick = {}
 )

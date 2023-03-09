@@ -78,7 +78,7 @@ fun Note(
                 onNoteCheckedChange(newNote)
             },
             modifier = Modifier
-                .padding(start = 8.dp)
+                .padding(16.dp)
                 .align(Alignment.CenterVertically)
         )
     }
@@ -87,7 +87,7 @@ fun Note(
 
 @Preview
 @Composable
-fun NotePreview(){
+private fun NotePreview(){
     Note(
         note = NoteModel(
             1,
