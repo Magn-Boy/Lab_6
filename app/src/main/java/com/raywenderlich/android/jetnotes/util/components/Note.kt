@@ -24,7 +24,8 @@ import com.raywenderlich.android.jetnotes.util.fromHex
 fun Note(
     note: NoteModel,
     onNoteClick: (NoteModel) -> Unit = {},
-    onNoteCheckedChange: (NoteModel) -> Unit = {}
+    onNoteCheckedChange: (NoteModel) -> Unit = {},
+    isSelected: Boolean
 ){
     val backgroundShape: Shape = RoundedCornerShape(4.dp)
     Row(
@@ -93,6 +94,7 @@ private fun NotePreview(){
             1,
             "Заметка 1",
             "Содержание 1",
-            null)
+            null
         )
+    )
 }

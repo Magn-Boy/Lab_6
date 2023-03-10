@@ -29,14 +29,32 @@ fun NotesScreen(viewModel: MainViewModel) {
             icon = Icons.Filled.List,
             onIconClick = {}
           )
-        LazyColumn{
-            items(count = notes.size){noteIndex -> val note = notes[noteIndex]
-                Note(
-                    note = note,
-                    onNoteClick = {viewModel.onNoteClick(it)},
-                    onNoteCheckedChange = {viewModel.onNoteCheckedChange(it)}
-                )
-            }
+        NotesList(
+            notes = notes,
+            onNoteClick = {viewModel.onNoteClick(it)},
+            onNoteCheckedChange = {viewModel.onNoteCheckedChange(it)}
+        )
+    }
+}
+
+
+
+@Composable
+private fun NotesList(
+    notes: List<NoteModel>,
+    onNoteCheckedChange: (NoteModel) -> Unit,
+    onNoteClick: (NoteModel) -> Unit,
+) {
+    LazyColumn {
+        items(count = notes.size){noteIndex->
+            val note = notes[noteIndex]
+            Note(
+                note = note,
+                onNoteClick = onNoteClick,
+                onNoteCheckedChange = onNoteCheckedChange,
+                isSelected = true
+            )
+
         }
     }
 }
@@ -44,12 +62,13 @@ fun NotesScreen(viewModel: MainViewModel) {
 
 @Preview
 @Composable
-private fun NotesListPreview(){ NotesList(
-    notes = listOf(
-        NoteModel(1, "Note 1", "Content 1", null),
-        NoteModel(1, "Note 2", "Content 2", true),
-        NoteModel(1, "Note 3", "Content 3", false)
-    ),
-    onNoteCheckedChange = {}, onNoteClick = {}
-)
+private fun NotesListPreview(){
+    NotesList(
+        notes = listOf(
+            NoteModel(1, "Note 1", "Content 1", null),
+            NoteModel(1, "Note 2", "Content 2", true),
+            NoteModel(1, "Note 3", "Content 3", false)
+        ),
+        onNoteCheckedChange = {}, onNoteClick = {}
+    )
 }
