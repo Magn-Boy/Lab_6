@@ -25,7 +25,6 @@ fun Note(
     note: NoteModel,
     onNoteClick: (NoteModel) -> Unit = {},
     onNoteCheckedChange: (NoteModel) -> Unit = {},
-    isSelected: Boolean
 ){
     val backgroundShape: Shape = RoundedCornerShape(4.dp)
     Row(

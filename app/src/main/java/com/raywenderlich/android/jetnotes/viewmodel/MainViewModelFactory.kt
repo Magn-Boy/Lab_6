@@ -8,6 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.raywenderlich.android.jetnotes.data.repository.Repository
 
 
+@Suppress("UNCHECKED_CAST")
 class MainViewModelFactory(
   owner: SavedStateRegistryOwner,
   private val repository: Repository,
