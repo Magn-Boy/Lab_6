@@ -1,1 +1,1 @@
-# Лаб_5 Using modifiers in Compose.
+# Лаб_5 УПРАВЛЕНИЕ СОСТОЯНИЕМ В COMPOSE.
